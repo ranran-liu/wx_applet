@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/classic/classic"
+  ],
+  "window":{
+    "navigationBarBackgroundColor":"#FFFF00",
+    "navigationBarTextStyle":"black",
+    "navigationBarTitleText":"逍遥浪子"
+    
+  }
+}
