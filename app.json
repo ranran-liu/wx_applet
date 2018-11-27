@@ -3,9 +3,11 @@
     "pages/classic/classic"
   ],
   "window":{
-    "navigationBarBackgroundColor":"#FFFF00",
+    "navigationBarBackgroundColor":"#FFFFFF",
     "navigationBarTextStyle":"black",
-    "navigationBarTitleText":"逍遥浪子"
+    "navigationBarTitleText":"逍遥大侠",
+    "backgroundColor":"#000000",
+    "enablePullDownRefresh":false
     
   }
 }
