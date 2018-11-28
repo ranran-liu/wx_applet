@@ -1,0 +1,5 @@
+<view>
+    <image src="{{img}}" />
+    <image src="images/movie@tag.png" />
+    <text>{{content}}</text>
+</view>
