@@ -11,7 +11,9 @@ Page({
   data: {
       classicData:null,
       latest:true,
-      first:false
+      first:false,
+      likeCount:0,
+      likeStatus:false
   },
 
   /**
@@ -21,7 +23,9 @@ Page({
       classicModel.getLatest((res)=>{
           console.log(res)
           this.setData({
-              classicData:res
+              classicData:res,
+              likeStatus:res.like_status,
+              likeCount:res.fav_nums
           })
       })
   },
@@ -30,18 +34,38 @@ Page({
       let behavior = event.detail.behavior
       likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type)
   },
+
   onNext: function (event) {
-      console.log(222)
+      this._updateClassic('next')
   },
   onPrevious: function (event) {
-      classicModel.getPrevious(this.data.classicData.index,(res)=>{
+      this._updateClassic('previous')
+  },
+
+  _updateClassic:function(nextOrPrevious){
+      let index = this.data.classicData.index
+      classicModel.getClassic(index, nextOrPrevious, (res) => {
+
+          this._getLikeStatus(res.id,res.type)
+
           this.setData({
-              classicData:res,
-              latest:classicModel.isLatest(res.index),
-              first:classicModel.isFirst(res.index)
+              classicData: res,
+              latest: classicModel.isLatest(res.index),
+              first: classicModel.isFirst(res.index)
           })
       })
   },
+
+  _getLikeStatus:function(artId,category){
+        likeModel.getClassicLikeStatus(artId,category,(res)=>{
+            this.setData({
+                likeStatus:res.like_status,
+                likeCount:res.fav_nums
+            })
+        })
+  },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
