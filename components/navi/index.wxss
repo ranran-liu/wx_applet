@@ -1,1 +1,18 @@
 /* components/navi/index.wxss */
+.container{
+    width: 600rpx;
+    height: 80rpx;
+    background-color: #f7f7f7;
+    border-radius: 4rpx;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.icon{
+    height: 80rpx;
+    width: 80rpx;
+}
+.title{
+    font-size: 28rpx;
+}

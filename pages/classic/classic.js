@@ -10,6 +10,8 @@ Page({
    */
   data: {
       classicData:null,
+      latest:true,
+      first:false
   },
 
   /**
@@ -27,6 +29,18 @@ Page({
       //console.log(event)
       let behavior = event.detail.behavior
       likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type)
+  },
+  onNext: function (event) {
+      console.log(222)
+  },
+  onPrevious: function (event) {
+      classicModel.getPrevious(this.data.classicData.index,(res)=>{
+          this.setData({
+              classicData:res,
+              latest:classicModel.isLatest(res.index),
+              first:classicModel.isFirst(res.index)
+          })
+      })
   },
 
   /**
