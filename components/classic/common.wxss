@@ -1,20 +1,11 @@
-/* components/classic/music/index.wxss */
 .classic-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .classic-img{
-    width: 422rpx;
-    height: 422rpx;
-    margin-top: 60rpx;
-    border-radius: 50%;
-}
-.player-img{
-    position: relative;
-    width: 120rpx;
-    height: 120rpx;
-    bottom: 270rpx;
+    width: 750rpx;
+    height: 500rpx;
 }
 .tag{
     width: 46rpx;
