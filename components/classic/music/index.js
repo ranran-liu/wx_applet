@@ -23,9 +23,12 @@ Component({
         pauseSrc: 'images/player@pause.png',
         playSrc: 'images/player@play.png'
     },
-
+    attached:function(event){
+        this._recoverStatus()
+        this._monitorSwitch()
+    },
     detached:function(event){
-        mMgr.stop()
+        //mMgr.stop()
     },
 
     /**
@@ -48,6 +51,37 @@ Component({
             }
         
            
+        },
+
+
+        _recoverStatus:function(){
+            if(mMgr.paused){
+                this.setData({
+                    playing:false
+                })
+                return 
+            }
+
+            if(mMgr.src == this.properties.src){
+                this.setData({
+                    playing:true
+                })
+            }
+        },
+
+        _monitorSwitch:function(){
+            mMgr.onPlay(()=>{
+                this._recoverStatus()
+            })
+            mMgr.onPause(() => {
+                this._recoverStatus()
+            })
+            mMgr.onStop(() => {
+                this._recoverStatus()
+            })
+            mMgr.onEnded(() => {
+                this._recoverStatus()
+            })
         }
     }
 })
